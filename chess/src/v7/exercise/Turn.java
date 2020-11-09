@@ -13,7 +13,7 @@ public class Turn {
 	}
 
 	public void start(Player[] players) {
-		this.player = players[this.count];
+		this.player = players[this.count%2];
 		Console.getInstance().write("Turn " + this.player.name());
 		this.menu.print();
 	}
