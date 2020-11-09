@@ -2,26 +2,25 @@ package v7.exercise;
 
 public class Turn {
 
-	private Chess chess;
 	private Player player;
 	private PlayMenu menu;
 	private int count;
-	
-	public Turn(Chess chess, Player player, Board board) {
-		this.chess = chess;
+	private boolean hasNext;
+	public Turn(Board board) {
 		this.menu = new PlayMenu(this, board);
-		this.player = player;
 		this.count = 0;
+		this.hasNext = true;
 	}
 
-	public void start() {
+	public void start(Player[] players) {
+		this.player = players[this.count];
 		Console.getInstance().write("Turn " + this.player.name());
 		this.menu.print();
 	}
 	
 	public void giveUp() {
 		Console.getInstance().write(this.player.name() + " Loose");
-		this.chess.init();
+		this.hasNext = false;
 	}
 
 	public void change(Player player) {
@@ -35,14 +34,16 @@ public class Turn {
 	public void next(String movement) {
 		this.player.add(movement);
 		this.count++;
-		this.player = this.chess.getPlayer(count%2);
-		this.chess.next();
 	}
 	
 	public void finish(String movement) {
 		this.player.add(movement);
 		Console.getInstance().write(this.player.name() + " Win");
-		this.chess.finish();
+		this.hasNext = false;
+	}
+	
+	public boolean hasNext() {
+		return this.hasNext;
 	}
 
 }
