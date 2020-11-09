@@ -26,18 +26,18 @@ public class Player {
 			DataPiece.ROOK
 	};
 	
-	public Player(Color color, Coordinate[] lastRow, Coordinate[] pawnRow) {
+	public Player(Color color, Board board) {
 		this.color = color;
 		this.movements = new ArrayList<String>();
-		for( int i = 0 ; i < pawnRow.length ; i++ ) {
-			pawnRow[i].add(new Pawn(this));
-		}
 		try {
-			for( int i = 0 ; i < pieces.length ; i++ ) {
-				lastRow[i].add(pieces[i].newInstance(this));
+			for( int i = 0 ; i < board.getRow(color.getFirstRow()).length ; i++ ) {
+				board.getRow(color.getFirstRow())[i].add(pieces[i].newInstance(this));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		for( int i = 0 ; i < board.getRow(color.getSecondRow()).length ; i++ ) {
+			board.getRow(color.getSecondRow())[i].add(new Pawn(this));
 		}
 	}
 	
