@@ -1,7 +1,7 @@
 package v7.exercise;
 
 import v7.exercise.enums.DataPiece;
-import v7.exercise.enums.Position;
+import v7.exercise.enums.Direction;
 import v7.exercise.pieces.Piece;
 
 public class Coordinate {
@@ -65,23 +65,23 @@ public class Coordinate {
 	}
 	
 	public int distance(Coordinate coordinate) {
-		Position position = getPosition(coordinate);
-		if(position == null) {
+		Direction direction = getDirection(coordinate);
+		if(direction == null) {
 			return -1;
 		}
-		if(position.isVertical()) {
+		if(direction.isVertical()) {
 			return Math.abs(this.x - coordinate.x) ;
 		}
 		return Math.abs(this.y - coordinate.y) ;
 	}
 	
-	public Position getPosition(Coordinate coordinate) {
-		return Position.valueOf(this.compareX(coordinate), this.compareY(coordinate));
+	public Direction getDirection(Coordinate coordinate) {
+		return Direction.valueOf(this.compareX(coordinate), this.compareY(coordinate));
 	}
 	
 	public Coordinate getMinimum(Coordinate coordinate) {
-		Position position = getPosition(coordinate);
-		if(position.isMinor()) {
+		Direction direction = getDirection(coordinate);
+		if(direction.isMinor()) {
 			return this;
 		}
 		return coordinate;
