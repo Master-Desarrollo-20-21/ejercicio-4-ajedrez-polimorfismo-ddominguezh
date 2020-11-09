@@ -19,8 +19,8 @@ public class Chess {
 	public void play() {
 		this.board = new Board();
 		this.players = new Player[2];
-		this.players[0] = new Player(Color.WHITE, this.board.getRow(0), this.board.getRow(1));
-		this.players[1] = new Player(Color.BLACK, this.board.getRow(7), this.board.getRow(6));
+		this.players[0] = new Player(Color.WHITE, this.board);
+		this.players[1] = new Player(Color.BLACK, this.board);
 		this.turn = new Turn(this.board);
 		next();
 	}
