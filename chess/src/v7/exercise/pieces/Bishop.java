@@ -15,9 +15,9 @@ public class Bishop extends Piece {
 	@Override
 	public boolean canMove(Coordinate origin, Coordinate destination) {
 		
-		Position position = origin.getPosition(destination);
+		Direction direction = origin.getDirection(destination);
 		
-		if(position.isDiagonal()) {
+		if(direction.isDiagonal()) {
 			return true;
 		}
 		
