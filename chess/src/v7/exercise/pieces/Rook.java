@@ -14,10 +14,9 @@ public class Rook extends Piece {
 
 	@Override
 	public boolean canMove(Coordinate origin, Coordinate destination) {
+		Direction direction = origin.getDirection(destination);
 		
-		Position position = origin.getPosition(destination);
-		
-		if(position.isHorizontal() || position.isVertical()) {
+		if(direction.isHorizontal() || direction.isVertical()) {
 			return true;
 		}
 		
