@@ -14,8 +14,8 @@ public class Queen extends Piece {
 
 	@Override
 	public boolean canMove(Coordinate origin, Coordinate destination) {
-		Position position = origin.getPosition(destination);
-		if(!Position.L_SHAPE.equals(position)) {
+		Direction direction = origin.getDirection(destination);
+		if(!Direction.L_SHAPE.equals(direction)) {
 			return true;
 		}
 		return false;
