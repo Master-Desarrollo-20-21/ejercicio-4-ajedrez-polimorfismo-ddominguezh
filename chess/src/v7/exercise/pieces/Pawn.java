@@ -14,15 +14,15 @@ public class Pawn extends Piece{
 
 	@Override
 	public boolean canMove(Coordinate origin, Coordinate destination) {
-		Position position = origin.getPosition(destination);
+		Direction direction = origin.getDirection(destination);
 		int distance = origin.distance(destination);
 		if(destination.containsPieceOfOpponent(this.player)) {
-			return distance == 1 && ((this.player.isWhite() && position.isDiagonalForward()) 
-					|| (!this.player.isWhite() && position.isDiagonalBack()));
+			return distance == 1 && ((this.player.isWhite() && direction.isDiagonalForward()) 
+					|| (!this.player.isWhite() && direction.isDiagonalBack()));
 		}
 		if(distance == 1 || (distance == 2 && this.initialPosition)) {
-			return ((this.player.isWhite() && Position.VERTICAL_FORWARD.equals(position)) || 
-					(!this.player.isWhite() && Position.VERTICAL_BACK.equals(position)));
+			return ((this.player.isWhite() && Direction.VERTICAL_FORWARD.equals(direction)) || 
+					(!this.player.isWhite() && Direction.VERTICAL_BACK.equals(direction)));
 		}
 		return false;
 	}
