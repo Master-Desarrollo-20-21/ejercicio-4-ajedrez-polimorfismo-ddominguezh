@@ -1,6 +1,6 @@
 package v7.exercise;
 
-import v7.exercise.enums.Position;
+import v7.exercise.enums.Direction;
 
 public class Movement {
 
@@ -9,7 +9,7 @@ public class Movement {
 	private String movement;
 	private Coordinate origin;
 	private Coordinate destination;
-	private Position position;
+	private Direction direction;
 	public Movement(Turn turn, Board board) {
 		this.turn = turn;
 		this.board = board;
@@ -23,13 +23,13 @@ public class Movement {
 		if(coordinates != null) {
 			this.origin = coordinates[0];
 			this.destination = coordinates[1];
-			this.position = this.origin.getPosition(this.destination);
+			this.direction = this.origin.getDirection(this.destination);
 		}
 		return this;
 	}
 
 	public boolean isValid() {
-		return this.position != null 
+		return this.direction != null 
 				&& this.freeWay()
 				&& this.origin.containsPieceOfMine(this.turn.getPlayer()) 
 				&& !this.destination.containsPieceOfMine(this.turn.getPlayer())
@@ -38,18 +38,18 @@ public class Movement {
 
 	public boolean freeWay() {
 		int distance = this.origin.distance(this.destination);
-		if(distance > 1 && !Position.L_SHAPE.equals(this.position)) {
+		if(distance > 1 && !Direction.L_SHAPE.equals(this.direction)) {
 			Coordinate minimum = origin.getMinimum(this.destination);
 			int i = 0, j = 0, max = distance - 1;
 			do {
 				
-				if(position.isVertical() || position.isDiagonal()) {
+				if(direction.isVertical() || direction.isDiagonal()) {
 					i++;
 				}
 				
-				if(Position.DIAGONAL_FORWARD_RIGHT.equals(position) || Position.DIAGONAL_BACK_LEFT.equals(position)) {
+				if(Direction.DIAGONAL_FORWARD_RIGHT.equals(direction) || Direction.DIAGONAL_BACK_LEFT.equals(direction)) {
 					j--;
-				}else if(position.isHorizontal() || position.isDiagonal()) {
+				}else if(direction.isHorizontal() || direction.isDiagonal()) {
 					j++;
 				}
 				
