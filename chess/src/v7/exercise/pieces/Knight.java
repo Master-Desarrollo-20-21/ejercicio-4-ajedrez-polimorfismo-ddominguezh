@@ -15,9 +15,9 @@ public class Knight extends Piece {
 	@Override
 	public boolean canMove(Coordinate origin, Coordinate destination) {
 		
-		Position position = origin.getPosition(destination);
+		Direction direction = origin.getDirection(destination);
 		
-		if(Position.L_SHAPE.equals(position)) {
+		if(Direction.L_SHAPE.equals(direction)) {
 			return true;
 		}
 		
