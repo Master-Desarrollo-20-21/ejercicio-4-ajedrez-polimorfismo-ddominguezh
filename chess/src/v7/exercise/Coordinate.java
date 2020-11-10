@@ -26,16 +26,16 @@ public class Coordinate {
 		this.piece = piece;
 	}
 	
-	public boolean containsPieceOfMine(Player player) {
-		return notEmpty() && this.piece.equalsPlayer(player);
+	public boolean containsPieceOfMine(Color color) {
+		return notEmpty() && this.piece.equalsColor(color);
 	}
 	
-	public boolean containsPieceOfOpponent(Player player) {
-		return notEmpty() && !this.piece.equalsPlayer(player);
+	public boolean containsPieceOfOpponent(Color color) {
+		return notEmpty() && !this.piece.equalsColor(color);
 	}
 	
-	public boolean containsKingOfOpponent(Player player) {
-		return containsPieceOfOpponent(player) && this.piece.equals(DataPiece.KING);
+	public boolean containsKingOfOpponent(Color color) {
+		return containsPieceOfOpponent(color) && this.piece.equals(DataPiece.KING);
 	}
 	
 	public boolean empty() {
