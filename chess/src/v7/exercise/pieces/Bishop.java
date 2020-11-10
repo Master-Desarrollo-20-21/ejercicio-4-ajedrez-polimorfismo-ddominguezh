@@ -7,9 +7,8 @@ import v7.exercise.enums.Position;
 
 public class Bishop extends Piece {
 
-	//ALFIL
-	public Bishop(Player player) {
-		super(player, DataPiece.BISHOP);
+	public Bishop(Color color) {
+		super(color, DataPiece.BISHOP);
 	}
 
 	@Override
