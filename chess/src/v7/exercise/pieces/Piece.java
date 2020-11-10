@@ -6,22 +6,22 @@ import v7.exercise.enums.DataPiece;
 
 public abstract class Piece {
 
-	protected Player player;
+	protected Color color;
 	protected boolean initialPosition;
 	private DataPiece data;
 	
-	public Piece(Player player, DataPiece data) {
-		this.player = player;
+	public Piece(Color color, DataPiece data) {
+		this.color = color;
 		this.data = data;
 		this.initialPosition = true;
 	}
 	
 	public char name() {
-		return data.getName(this.player.isWhite());
+		return data.getName(this.color);
 	}
 	
-	public boolean equalsPlayer(Player player) {
-		return this.player.equals(player);
+	public boolean equalsColor(Color color) {
+		return this.color.equals(color);
 	}
 	
 	public void move() {
