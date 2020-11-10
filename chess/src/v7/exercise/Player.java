@@ -31,13 +31,13 @@ public class Player {
 		this.movements = new ArrayList<String>();
 		try {
 			for( int i = 0 ; i < board.getRow(color.getFirstRow()).length ; i++ ) {
-				board.getRow(color.getFirstRow())[i].add(pieces[i].newInstance(this));
+				board.getRow(color.getFirstRow())[i].add(pieces[i].newInstance(this.color));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		for( int i = 0 ; i < board.getRow(color.getSecondRow()).length ; i++ ) {
-			board.getRow(color.getSecondRow())[i].add(new Pawn(this));
+			board.getRow(color.getSecondRow())[i].add(new Pawn(this.color));
 		}
 	}
 	
@@ -51,6 +51,10 @@ public class Player {
 	
 	public void add(String movement) {
 		this.movements.add(movement);
+	}
+
+	public Color getColor() {
+		return this.color;
 	}
 	
 }
