@@ -31,8 +31,8 @@ public class Movement {
 	public boolean isValid() {
 		return this.direction != null 
 				&& this.freeWay()
-				&& this.origin.containsPieceOfMine(this.turn.getPlayer()) 
-				&& !this.destination.containsPieceOfMine(this.turn.getPlayer())
+				&& this.origin.containsPieceOfMine(this.turn.getColor()) 
+				&& !this.destination.containsPieceOfMine(this.turn.getColor())
 				&& this.origin.canMove(this.destination);
 	}
 
@@ -64,7 +64,7 @@ public class Movement {
 	}
 	
 	public void execute() {
-		if(destination.containsKingOfOpponent(this.turn.getPlayer())) {
+		if(destination.containsKingOfOpponent(this.turn.getColor())) {
 			this.origin.move(this.destination);
 			this.turn.finish(this.movement);
 		}else {
