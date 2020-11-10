@@ -7,9 +7,8 @@ import v7.exercise.enums.Position;
 
 public class Knight extends Piece {
 
-	//CABALLO
-	public Knight(Player player) {
-		super(player, DataPiece.KNIGHT);
+	public Knight(Color color) {
+		super(color, DataPiece.KNIGHT);
 	}
 
 	@Override
