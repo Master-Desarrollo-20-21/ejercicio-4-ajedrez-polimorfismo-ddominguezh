@@ -6,9 +6,8 @@ import v7.exercise.enums.DataPiece;
 
 public class King extends Piece {
 
-	//REY
-	public King(Player player) {
-		super(player, DataPiece.KING);
+	public King(Color color) {
+		super(color, DataPiece.KING);
 	}
 
 	@Override
