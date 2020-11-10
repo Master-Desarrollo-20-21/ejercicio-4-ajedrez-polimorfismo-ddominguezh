@@ -46,4 +46,8 @@ public class Turn {
 		return this.hasNext;
 	}
 
+	public Color getColor() {
+		return this.player.getColor();
+	}
+
 }
