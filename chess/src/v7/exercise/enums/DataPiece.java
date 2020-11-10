@@ -18,12 +18,12 @@ public enum DataPiece {
 	}
 	
 	@SuppressWarnings("static-access")
-	public Piece newInstance(Player player) throws Exception {
-		return (Piece) Piece.class.forName(this.classname).getDeclaredConstructor(player.getClass()).newInstance(player);
+	public Piece newInstance(Color color) throws Exception {
+		return (Piece) Piece.class.forName(this.classname).getDeclaredConstructor(color.getClass()).newInstance(color);
 	}
 	
-	public char getName(boolean isWhite) {
-		if(isWhite) {
+	public char getName(Color color) {
+		if(Color.WHITE.equals(color)) {
 			return this.white;
 		}
 		return this.black;
