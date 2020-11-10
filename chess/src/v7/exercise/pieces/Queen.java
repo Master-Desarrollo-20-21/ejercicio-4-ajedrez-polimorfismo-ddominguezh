@@ -7,9 +7,8 @@ import v7.exercise.enums.Position;
 
 public class Queen extends Piece {
 
-	//DAMA
-	public Queen(Player player) {
-		super(player, DataPiece.QUEEN);
+	public Queen(Color color) {
+		super(color, DataPiece.QUEEN);
 	}
 
 	@Override
