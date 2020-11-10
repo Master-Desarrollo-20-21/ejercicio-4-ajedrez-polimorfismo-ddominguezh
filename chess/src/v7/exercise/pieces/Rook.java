@@ -7,13 +7,13 @@ import v7.exercise.enums.Position;
 
 public class Rook extends Piece {
 
-	//TORRE
-	public Rook(Player player) {
-		super(player, DataPiece.ROOK);
+	public Rook(Color color) {
+		super(color, DataPiece.ROOK);
 	}
 
 	@Override
 	public boolean canMove(Coordinate origin, Coordinate destination) {
+		
 		Direction direction = origin.getDirection(destination);
 		
 		if(direction.isHorizontal() || direction.isVertical()) {
